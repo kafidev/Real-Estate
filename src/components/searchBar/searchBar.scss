@@ -1,0 +1,14 @@
+
+.searchBar{
+
+    .type{
+        display:flex;
+        gap:2px;
+       button{
+         padding:10px 25px;
+         border-radius: 5px;
+         border: 1px solid #ccc;
+       }
+      
+    }
+}

@@ -1,0 +1,123 @@
+// 1. Waxaan u beddelnay habka casriga ah ee Sass modules (Sass 3.0.0 Ready)
+@use "../../responsive" as *;
+
+nav {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    transition: all 0.3s ease;
+
+    @include sm {
+      display: none;
+    }
+
+    &:hover {
+      transform: scale(1.05); // CSS-ka saxda ah waa transform: scale() saameyn fiican u leh transition-ka
+    }
+  }
+
+  .left {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    // logo
+    .logo {
+      font-weight: bold;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      span {
+        @include md {
+          display: none;
+        }
+        @include sm {
+          display: initial;
+        }
+      }
+
+      img {
+        width: 28px;
+      }
+    }
+  }
+
+  // right side of the navbar
+  .right {
+    flex: 2;
+    background-color: #ffeeee;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+
+    @include md {
+      background-color: transparent;
+    }
+
+    a {
+      padding: 10px 24px;
+    }
+
+    .register {
+      background-color: #ff0957;
+      margin-right: 20px;
+      border-radius: 8px;
+      color: #ffff;
+    }
+
+    .menuIcon {
+      display: none;
+      z-index: 999;
+
+      @include sm {
+        display: inline;
+        margin-right: 20px;
+      }
+
+      img {
+        width: 40px;
+        cursor: pointer;
+      }
+    }
+
+    // 2. Menu-ga wajigiisa cusub: Halkan ayaa display:none looga saaray si transition-ku u shaqeeyo
+    .menu {
+      display: none; // Desktop-ka waa laga qariyey
+
+      @include sm {
+        display: flex; // Moobaylka mar kasta waa flex si uu u transition gareeyo
+        position: absolute;
+        top: 0;
+        right: -50%; // Wuxuu ku dhuumanayaa midigta banaankeeda
+        background-color: #090909;
+        height: 100vh;
+        width: 50%;
+        color: #fff;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 1s ease; // Waxaan si toos ah ugu xirnay 'right' si uu u jilco
+
+        a {
+          display: flex;
+          padding: 20px;
+          font-size: 20px;
+          color: #fff;
+        }
+
+        // 3. Marka JavaScript-ku uu ku daro active class
+        &.active {
+          right: 0; // Si smooth ah ayuu shaashada u soo galayaa!
+        }
+      }
+    }
+  }
+}
