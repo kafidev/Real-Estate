@@ -1,4 +1,3 @@
-// 1. Waxaan u beddelnay habka casriga ah ee Sass modules (Sass 3.0.0 Ready)
 @use "../../responsive" as *;
 
 nav {
@@ -15,7 +14,7 @@ nav {
     }
 
     &:hover {
-      transform: scale(1.05); // CSS-ka saxda ah waa transform: scale() saameyn fiican u leh transition-ka
+      transform: scale(1.05);
     }
   }
 
@@ -25,7 +24,6 @@ nav {
     align-items: center;
     gap: 50px;
 
-    // logo
     .logo {
       font-weight: bold;
       font-size: 20px;
@@ -38,7 +36,7 @@ nav {
           display: none;
         }
         @include sm {
-          display: initial;
+          display: block; // Waxaan ka dhignay block si uu si sax ah ugu soo laabto moobaylka
         }
       }
 
@@ -48,7 +46,6 @@ nav {
     }
   }
 
-  // right side of the navbar
   .right {
     flex: 2;
     background-color: #ffeeee;
@@ -88,23 +85,23 @@ nav {
       }
     }
 
-    // 2. Menu-ga wajigiisa cusub: Halkan ayaa display:none looga saaray si transition-ku u shaqeeyo
     .menu {
       display: none; // Desktop-ka waa laga qariyey
 
       @include sm {
-        display: flex; // Moobaylka mar kasta waa flex si uu u transition gareeyo
-        position: absolute;
+        display: flex; // Halkan hadda wuxuu dhalayaa flex mar kasta oo shaashadu yar tahay
+        position: fixed; // Fixed ayaa ugu fiican menu-yada vh oogu talagalay
         top: 0;
-        right: -50%; // Wuxuu ku dhuumanayaa midigta banaankeeda
+        right: -100%; // Waxaan ka dhignay -100% si uu gabi ahaanba u qasmo marka uu xiran yahay
         background-color: #090909;
         height: 100vh;
-        width: 50%;
+        width: 50%; // Haddii aad rabto inuu badh dego, kani waa sax
         color: #fff;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: right 1s ease; // Waxaan si toos ah ugu xirnay 'right' si uu u jilco
+        transition: right 0.5s ease; // 0.5s ayaa ugu fiican oo firfircooni leh
+        z-index: 998; // Inyari ka hooseysa menuIcon-ka si icon-ku u muuqdo mar walba
 
         a {
           display: flex;
@@ -113,9 +110,8 @@ nav {
           color: #fff;
         }
 
-        // 3. Marka JavaScript-ku uu ku daro active class
         &.active {
-          right: 0; // Si smooth ah ayuu shaashada u soo galayaa!
+          right: 0; // Menu-gu hadda si smooth ah ayuu u soo dhex-guri doonaa!
         }
       }
     }

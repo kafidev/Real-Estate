@@ -1,3 +1,5 @@
+@import "../../responsive" ;
+
 .homePage {
   display: flex;
   height: 100%;
@@ -17,6 +19,18 @@
                 font-size: 70px;
                 font-weight: 600;
             }
+            .boxes{
+                display:flex;
+                justify-content: space-between;
+                
+                h1{
+                    font-size: 30px;
+                }
+                h2{
+                    font-size: 20px;
+                    font-weight: 300;
+                }
+            }
           
         }
     }
@@ -30,6 +44,10 @@
             width:100%;
             position: absolute;
             right: 70px;
+        }
+
+        @include md {
+            display: none;
         }
     }
 }

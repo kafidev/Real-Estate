@@ -1,14 +1,103 @@
+@use "../../responsive" as *;
 
-.searchBar{
+.searchBar {
+  width: 100%; // 1. Hubi in raadraaca searchBar uusan ka weynaan karin waalidka
 
-    .type{
-        display:flex;
-        gap:2px;
-       button{
-         padding:10px 25px;
-         border-radius: 5px;
-         border: 1px solid #ccc;
-       }
-      
+  .type {
+    display: flex;
+
+    button {
+      padding: 10px 25px;
+      border: 1px solid #e1e1e1;
+      background-color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:nth-child(1) {
+        border-top-left-radius: 8px;
+        border-right: none;
+      }
+      &:nth-child(2) {
+        border-top-right-radius: 8px;
+        border-bottom: none;
+      }
+
+      &.active {
+        background-color: rgb(216, 1, 65);
+        border-color: rgb(216, 1, 65);
+        color: #fff;
+      }
     }
+
+    @include md{
+      margin: 0 auto;
+    }
+  }
+
+  form {
+    border: 1px solid #d7d7d7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    overflow: hidden; 
+    background-color: #fff;
+    width: 100%; // 2. Kani wuxuu ku qasbayaa form-ka inuu qaato dhererka shaashada oo kaliya
+
+    // Marka shaashadu yarato (Tablet/Mobile), form-ka dhererkiisa kor u qaad si la rabo
+    @include md {
+      flex-direction: column; // 3. Haddii inputs-ku ay isku dhab dhacaan, hoos u kala ror!
+      height: auto; // Height-ka ka dhig mid la jaanqaada inputs-ka hoos u dhacaya
+     
+    }
+
+    input {
+      border: none;
+      padding: 0 15px;
+      height: 100%;
+      flex: 1; 
+      min-width: 0; // 4. Tani waa furaha diidaya inuu input-ku dibada u baxo
+
+      &:not(:last-of-type) {
+        border-right: 1px solid #e1e1e1;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      @include md {
+        width: 100%; // Moobaylka dhexdiisa input kasta dhererkiisa ha buuxiyo
+        height: 50px; // Mid walba dherer gooniyah siiya
+        border-right: none !important;
+        border-bottom: 1px solid #e1e1e1; // Xariiqda hoos u dhig halkii ay 
+        padding: 10px;
+        
+      
+      }
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      background-color: rgb(216, 1, 65);
+      height: 100%;
+      padding: 0 30px; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include md {
+        width: 100%; // Badanka Search-ka isagana moobaylka ha daboosho hoosta
+        height: 50px;
+      }
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+  }
 }
